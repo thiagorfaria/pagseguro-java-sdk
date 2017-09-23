@@ -33,6 +33,27 @@ Instalação
  - Importe o arquivo ```pagseguro-api-*.*.*.jar``` para seu projeto
  - O diretório *public* contém exemplos de chamadas utilizando a API e o diretório *source* contém a biblioteca propriamente dita.
 
+Instalação alternativa - Thiago Faria
+-------------------------------------
+
+A API do PagSeguro é a unica que não está disponível no repositório do maven.
+Para fazer o importe dela para o respositório local segui os passos abaixo.
+
+```
+$ git clone https://github.com/thiagorfaria/pagseguro-java-sdk.git
+$ cd ./source
+$ ./gradlew clean build
+$ cd ./build/libs
+$ ../../mvnw install:install-file -Dfile=pagseguro-api-3.1.1.jar -DgroupId=br.com.uol.pagseguro -DartifactId=pagseguro-api -Dversion=3.1.1 -Dpackaging=jar
+```
+Se vc estiver usando o gradle no seu projeto, com a biblioteca do PagSeguro no repositório local basta vc adicionar `mavenLocal()` nas configurações do `build.gradlew`.
+Exemplo completo : 
+```
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+```
 
 Configuração
 ------------
